@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big imagem</title>
+</head>
+<body>
+    <img id = "Ainsley" src = "https://i.kym-cdn.com/entries/icons/original/000/004/781/ainsley.jpg" width="300px" height="400">
+
+  <span id= "randomcomvaloraleatorio">300</span>
+
+<button onclick = "Teste()">
+    
+    Arise
+
+</button>
+
+<button onclick = "Testeent()">
+
+    Fall
+
+</button>
+
+
+
+</body>
+</html>
+
+<script>
+
+
+ function Teste(){
+    randomcomvaloraleatorio.innerHTML = Number(randomcomvaloraleatorio.innerHTML) + 30
+     Ainsley.style.width = randomcomvaloraleatorio.innerHTML + "px"
+
+ }
+ function Testeent(){
+ randomcomvaloraleatorio.innerHTML = Number(randomcomvaloraleatorio.innerHTML) - 30
+  Ainsley.style.width = randomcomvaloraleatorio.innerHTML + "px"
+ 
+
+
+ }
+
+
+
+
+</script>
+

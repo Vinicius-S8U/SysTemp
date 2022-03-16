@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title>Calculadora Financeira</title>
+
+    <style>
+        * {
+        font-family: Montserrat, sans-serif;
+        }
+        h1 {
+        margin-left: 36.5%;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <h1>Calculadora Financeira</h1>
+    <p>Este programa tem a finalidade de informar o usuário sobre a perda de lucro em casos de falhas
+            nas máquinas somado à quantia gasta com reparos. Os dados solicitados são o lucro por hora de 
+            trabalho da máquina, a quantidade de máquinas presentes na indústria, quantas delas estão sem 
+            funcionar e por quanto tempo ficaram paradas. Os cálculos realizados utilizam como base um 
+            sistema de produção de 24 horas por dia.</p>
+
+    <fieldset>
+        
+        Lucro por hora da máquina: <input id="input_lucro_maquina_hora" placeholder="Exemplo: 5000"><br>
+        Total de máquinas: <input id="input_total_maquinas" placeholder="Exemplo: 20"><br>
+        Máquinas em manutenção: <input id="input_maquinas_off" placeholder="Exemplo: 2"><br>
+        Horas em manutenção: <input id="input_horas_off" placeholder="Exemplo: 16"><br>
+        Custo adicional de manutenção: <input id="input_preco_adicional" placeholder="Exemplo: 20000"><br>
+
+        <button type="button" onclick="calcula_perda()">Calcular valor</button>
+
+    </fieldset>
+    
+    <div id="mensagem"></div>
+
+</body>
+</html>
+
+<script>
+
+    function calcula_perda() {
+        var lucro_maquina_hora = Number(input_lucro_maquina_hora.value);
+        var total_maquinas = Number(input_total_maquinas.value);
+        var maquinas_off = Number(input_maquinas_off.value);
+        var horas_off = Number(input_horas_off.value);
+        var preco_adicional = Number(input_preco_adicional.value);
+        
+        var lucro_maquina_diario = (lucro_maquina_hora * 24);
+        var lucro_total_diario = (lucro_maquina_diario * total_maquinas);
+        var perda_diaria = (lucro_maquina_hora * horas_off) * maquinas_off;
+        var ganho_diario = (lucro_total_diario - perda_diaria);
+        var porcentagem_ganho_diario = (ganho_diario * 100) / lucro_total_diario;
+        var porcentagem_perda_diaria = 100 - porcentagem_ganho_diario;
+        var gasto_total = (perda_diaria + preco_adicional);
+
+        mensagem.innerHTML=`<p>O valor perdido será de ${perda_diaria.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}, 
+        equivalente a ${porcentagem_perda_diaria.toFixed(2)}% da renda diária da indústria.
+        Somado ao valor da despesa com a manutenção, a perda total será de 
+        ${gasto_total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}.</p>`
+    }
+
+</script>
